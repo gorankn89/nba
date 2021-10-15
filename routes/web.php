@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\create_player_controller;
+use App\Http\Controllers\Team;
+use App\Models\Team as ModelsTeam;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Team::class, 'index']);
+Route::get('teams/{id}', [Team::class, 'getTeam']);
+Route::get('/players/{id}', [create_player_controller::class, 'getPlayer']);
